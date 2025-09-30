@@ -33,7 +33,7 @@ FEATURES = ['Speed over Ground [knots]', 'Heading [degrees]','Shaft RPM PS  [rpm
 
 TIME_STEPS = 3 
 
-model = load_model(r"C:/Users/BrunoNad/Documents/Project_consumption/nn7.keras")
+#model = load_model(r"C:/Users/BrunoNad/Documents/Project_consumption/nn7.keras")
 
 
 def calculate():
