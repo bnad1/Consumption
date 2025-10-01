@@ -1,0 +1,4 @@
+Speed over Ground [knots],Heading [degrees],Shaft RPM PS [rpm],Shaft RPM SB [rpm],Shaft Power PS [kW],Shaft Power SB [kW],Shaft Torque PS [kNm],Shaft Torque SB [kNm],Wind Speed [m/s],Consumption 5 minutes ago,Consumption 10 minutes ago,Consumption 15 minutes ago,Consumption 20 minutes ago,Consumption 25 minutes ago,Consumption 30 minutes ago,Consumption 35 minutes ago,Consumption 40 minutes ago,Consumption 45 minutes ago,Consumption 50 minutes ago,Consumption 55 minutes ago,Consumption 60 minutes ago
+18.975,267.55,212.9,213.2,3539,3528.75,308.225,307.95,7.0,2150.8,2155.8,2154.9,2149.4,2155.7,2155.5,2154.3,2149.3,2156.3,2155.4,2152.6,2172.0
+18.9,267.5,213.0,213.2,3544,3581.0,308.3,313.0,6.5,2145.7,2150.8,2155.8,2154.9,2149.4,2155.7,2155.5,2154.3,2149.3,2156.3,2155.4,2152.6
+18.5,236.5,213.0,213.0,3541,3571.75,308.5,312.475,7.8,2154.9,2145.7,2150.8,2155.8,2154.9,2149.4,2155.7,2155.5,2154.3,2149.3,2156.3,2155.4

@@ -2,16 +2,11 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import pandas as pd
 
-stupci = ['Speed over Ground [knots]', 'Heading [degrees]', 'Shaft RPM PS [rpm]',
-          'Shaft RPM SB [rpm]', 'Shaft Power PS [kW]', 'Shaft Power SB [kW]', 
-          'Shaft Torque PS [kNm]', 'Shaft Torque SB [kNm]', 'Wind Speed [m/s]',
-          'Consumption 10 minutes ago', 'Consumption 20 minutes ago',
-          'Consumption 30 minutes ago', 'Consumption 40 minutes ago',
-          'Consumption 50 minutes ago']
+stupci=['Speed over Ground [knots]','Heading [degrees]','Shaft RPM PS [rpm]','Shaft RPM SB [rpm]','Shaft Power PS [kW]','Shaft Power SB [kW]','Shaft Torque PS [kNm]',
+         'Shaft Torque SB [kNm]','Wind Speed [m/s]','Consumption 5 minutes ago','Consumption 10 minutes ago','Consumption 15 minutes ago','Consumption 20 minutes ago','Consumption 25 minutes ago',
+         'Consumption 30 minutes ago','Consumption 35 minutes ago','Consumption 40 minutes ago','Consumption 45 minutes ago','Consumption 50 minutes ago','Consumption 55 minutes ago','Consumption 60 minutes ago']
 
-koeficijenti = [291.48583616784373, -3.211413, 0.014851, -0.927242, 1.153701, 0.437464,
-                0.142714, 0.298328, -0.752784, -2.352980, 0.002621, -0.013778, 0.004272,
-                -0.009622, -0.010273]
+koeficijenti=[287.57644561993806,0.683006,-0.047539,0.454697,-2.097342,0.461603,-0.075753,-0.804308,2.936112,-2.719691,0.092525,0.058096,-0.058090,0.005878,-0.029724,0.044239,-0.036321,0.013854,0.002306,-0.012414,	0.035479,-0.025166]
 
 data = None
 
@@ -50,7 +45,7 @@ def calculate():
         result_text.insert(tk.END, f"{idx}\t{val:.4f}\n")
 
 root = tk.Tk()
-root.title("Fuel Consumption Calculator")
+root.title("Consumption Calculator")
 
 load_button = tk.Button(root, text="Load CSV File", command=load_file)
 load_button.pack(pady=10)

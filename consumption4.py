@@ -4,14 +4,12 @@ import pandas as pd
 
 stupci = ['Speed over Ground [knots]', 'Heading [degrees]', 'Shaft RPM PS [rpm]',
           'Shaft RPM SB [rpm]', 'Shaft Power PS [kW]', 'Shaft Power SB [kW]', 
-          'Shaft Torque PS [kNm]', 'Shaft Torque SB [kNm]', 'Wind Speed [m/s]',
+          'Shaft Torque PS [kNm]', 'Shaft Torque SB [kNm]', 'Rate of turn','Wind Speed [m/s]',
           'Consumption 10 minutes ago', 'Consumption 20 minutes ago',
           'Consumption 30 minutes ago', 'Consumption 40 minutes ago',
           'Consumption 50 minutes ago']
 
-koeficijenti = [291.48583616784373, -3.211413, 0.014851, -0.927242, 1.153701, 0.437464,
-                0.142714, 0.298328, -0.752784, -2.352980, 0.002621, -0.013778, 0.004272,
-                -0.009622, -0.010273]
+koeficijenti = [287.2863130821273,-2.795556,0.022874,-0.918029,1.221253,0.444881,0.144284,0.248228,-0.849692,-0.407847,-1.904554,-0.003768,-0.008412,0.003764,-0.021995,-0.002580]
 
 data = None
 
