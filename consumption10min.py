@@ -19,7 +19,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr
 from sklearn.svm import SVR,LinearSVR
-
+from sklearn.neighbors import KNeighborsRegressor
 data=pd.read_csv(r"C:\Users\BrunoNad\Downloads\Dataset Fuel Oil(Tabelle1).csv",sep=";")
 data=data.iloc[:,[0,1,2,4,5,6,8,10,11,12,14,16,19,20,23,24,25]]
 data.columns = data.columns.str.strip()
@@ -75,6 +75,7 @@ ytrain=y[:train_end]
 Xtest=X[train_end:]
 ytest=y[train_end:]
 
+
 ################################################ 
 # Linear regression
 lr=LinearRegression()
@@ -119,6 +120,8 @@ with open(pkl_filename,'rb') as file:
 
 # MAE:  39.39      MSE:  2754.87   MAPE:  6.67 %
 ##################################
+
+
 
 
 
