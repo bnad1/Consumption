@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression,Ridge,Lasso
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error,r2_score,mean_squared_error,mean_absolute_percentage_error
 from sklearn.model_selection import GridSearchCV
@@ -18,7 +18,7 @@ from sklearn.model_selection import GridSearchCV
 #from tensorflow.keras.regularizers import l2
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr
-from sklearn.svm import SVR
+from sklearn.svm import SVR,LinearSVR
 
 data=pd.read_csv(r"C:\Users\BrunoNad\Downloads\Dataset Fuel Oil(Tabelle1).csv",sep=";")
 data=data.iloc[:,[0,1,2,4,5,6,8,10,11,12,14,16,19,20,23,24,25]]
@@ -48,7 +48,6 @@ data_fuel=data_fuel.iloc[::2].reset_index(drop=True)
 
 table=pd.concat([data1,data_wind,data_fuel],axis=1)
 
-
 def pearson_correlation(df, target_column):
     correlations = {}
     for col in df.columns:
@@ -76,7 +75,6 @@ ytrain=y[:train_end]
 Xtest=X[train_end:]
 ytest=y[train_end:]
 
-
 ################################################ 
 # Linear regression
 lr=LinearRegression()
@@ -93,12 +91,34 @@ predlr=lr.predict(Xtest)
 
 ###################################
 # SVR
+""" param_grid = {'C': [0.1, 1, 10, 100],'epsilon':[0.01,0.1,0.2,0.5],'kernel':['linear']}
+svr=SVR()
+grid_search = GridSearchCV(svr, param_grid, cv=5, scoring='neg_mean_squared_error', n_jobs=-1)
+grid_search.fit(Xtrain, ytrain)
+print("best parameters: ",grid_search.best_estimator_)
+print("best score: ",-grid_search.best_score_) """
+
 
 svr=SVR(kernel='linear')
 svr.fit(Xtrain,ytrain)
-pd.DataFrame({'actual':ytest,'predicted':svr.predict(Xtest),'error':abs(ytest-svr.predict(Xtest))}).to_csv("C:/Users/BrunoNad/Documents/Project_consumption/results_svr10min.csv")
-print("MAE: ",round(mean_absolute_error(ytest,svr.predict(Xtest)),2),"\t MSE: ",round(mean_squared_error(svr.predict(Xtest),ytest),2),"\t MAPE: ",round(mean_absolute_percentage_error(svr.predict(Xtest),ytest)*100,2),"%")
+#pd.DataFrame({'actual':ytest,'predicted':svr.predict(Xtest),'error':abs(ytest-svr.predict(Xtest))}).to_csv("C:/Users/BrunoNad/Documents/Project_consumption/results_svr10min.csv")
+#pd.DataFrame({'actual':ytest,'predicted':svr.predict(Xtest),'error':abs(ytest-svr.predict(Xtest))}).to_excel("C:/Users/BrunoNad/Documents/Project_consumption/results_svr10min.xlsx")
+print("SVR model\n MAE: ",round(mean_absolute_error(ytest,svr.predict(Xtest)),2),"\t MSE: ",round(mean_squared_error(svr.predict(Xtest),ytest),2),"\t MAPE: ",round(mean_absolute_percentage_error(svr.predict(Xtest),ytest)*100,2),"%")
+
+import pickle
+#pkl_filename="C:/Users/BrunoNad/Documents/Project_consumption/svr_model.pkl"
+
+pkl_filename="svr_model.pkl"
+# save model
+with open(pkl_filename,'wb') as file:
+  pickle.dump(svr,file)
+
+# load model
+with open(pkl_filename,'rb') as file:
+  Svr=pickle.load(file) 
+
 # MAE:  39.39      MSE:  2754.87   MAPE:  6.67 %
 ##################################
 
-print(table)
+
+
